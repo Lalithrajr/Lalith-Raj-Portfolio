@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lalith Raj R</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #6c63ff;
+        --secondary: #4d44db;
+        --dark: #2f2e41;
+        --light: #f8f9fa;
+        --accent: #ff6584;
+        --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      header {
+        background: var(--gradient);
+        color: white;
+        padding: 2rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80")
+          center/cover;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .header-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: fill;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .profile-pic:hover {
+        transform: scale(1.05);
+      }
+
+      .header-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .header-text p {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        max-width: 600px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        color: white;
+        background: rgba(255, 255, 255, 0.2);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background: white;
+        color: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      /* Navigation */
+      nav {
+        background: white;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        position: relative;
+        padding: 0.5rem 0;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Section Styles */
+      section {
+        padding: 4rem 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+        display: inline-block;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        position: relative;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--gradient);
+        border-radius: 3px;
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-text {
+        animation: slideInLeft 1s ease-in-out;
+      }
+
+      .about-text h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .skill {
+        background: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .skill:hover {
+        background: var(--gradient);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      .about-image {
+        position: relative;
+        animation: slideInRight 1s ease-in-out;
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Education Section */
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 3px;
+        background: var(--gradient);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -1.5px;
+      }
+
+      .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        width: 50%;
+        animation: fadeInUp 1s ease-in-out;
+      }
+
+      .timeline-item:nth-child(odd) {
+        left: 0;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 50%;
+      }
+
+      .timeline-content {
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .timeline-content::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: white;
+        top: 30px;
+        transform: rotate(45deg);
+        box-shadow: 5px -5px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content::after {
+        right: -10px;
+      }
+
+      .timeline-item:nth-child(even) .timeline-content::after {
+        left: -10px;
+      }
+
+      .timeline-date {
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-desc {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-date {
+        text-align: right;
+      }
+
+      .timeline-item:nth-child(even) .timeline-date {
+        text-align: left;
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-image {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.1);
+      }
+
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      .project-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: var(--secondary);
+      }
+
+      .project-date {
+        font-size: 0.8rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .project-desc {
+        margin-bottom: 1.5rem;
+        color: #666;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .tech-item {
+        background: rgba(108, 99, 255, 0.1);
+        color: var(--primary);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .project-link {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background: var(--gradient);
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .project-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+      }
+
+      /* Experience Section */
+      .experience-item {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        animation: fadeInUp 1s ease-in-out;
+      }
+
+      .experience-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .exp-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+
+      .exp-title {
+        font-size: 1.2rem;
+        color: var(--secondary);
+      }
+
+      .exp-date {
+        color: var(--primary);
+        font-weight: 500;
+      }
+
+      .exp-company {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+
+      .exp-desc {
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .exp-highlights {
+        list-style-type: none;
+      }
+
+      .exp-highlights li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .exp-highlights li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+      }
+
+      /* Certifications Section */
+      .certs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .cert-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        animation: fadeInUp 1s ease-in-out;
+      }
+
+      .cert-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .cert-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--secondary);
+      }
+
+      .cert-org {
+        font-size: 0.9rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .cert-date {
+        font-size: 0.8rem;
+        color: #666;
+      }
+
+      /* Contact Section */
+      .contact-section {
+        background: var(--gradient);
+        color: white;
+        padding: 4rem 0;
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .contact-info {
+        animation: slideInLeft 1s ease-in-out;
+      }
+
+      .contact-info h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .contact-info p {
+        margin-bottom: 2rem;
+        max-width: 400px;
+      }
+
+      .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+
+      .contact-text h4 {
+        margin-bottom: 0.2rem;
+      }
+
+      .contact-text a {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .contact-text a:hover {
+        text-decoration: underline;
+      }
+
+      .contact-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        animation: slideInRight 1s ease-in-out;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: var(--dark);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+      }
+
+      .submit-btn {
+        background: var(--gradient);
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark);
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+      }
+
+      .footer-content {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent);
+      }
+
+      .copyright {
+        color: #aaa;
+        font-size: 0.9rem;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .about-content,
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+
+        .about-image {
+          order: -1;
+        }
+
+        .timeline::after {
+          left: 31px;
+        }
+
+        .timeline-item {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+
+        .timeline-item:nth-child(even) {
+          left: 0;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after,
+        .timeline-item:nth-child(even) .timeline-content::after {
+          left: -10px;
+          right: auto;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date,
+        .timeline-item:nth-child(even) .timeline-date {
+          text-align: left;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+
+        .nav-container {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="container header-content">
+        <!-- Replace with your actual photo -->
+        <img
+          src="images/aca_studentimage.jpeg"
+          alt="Lalith Raj R"
+          class="profile-pic"
+        />
+        <div class="header-text">
+          <h1>Lalith Raj R</h1>
+          <p>
+            Aspiring Data Analyst | Turning Complex Data into Clear Insights
+          </p>
+          <div class="social-links">
+            <a
+              href="https://www.linkedin.com/in/lalithraj-ramakrishnan-17a154229"
+              target="_blank"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="https://github.com/Lalithrajr" target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.hackerrank.com/profile/21ee062_kpriet"
+              target="_blank"
+              ><i class="fab fa-hackerrank"></i
+            ></a>
+            <a href="mailto:laiithraj738@gmail.com"
+              ><i class="fas fa-envelope"></i
+            ></a>
+            <a href="tel:9952110966"><i class="fas fa-phone"></i></a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="container nav-container">
+        <div class="logo">Lalith Raj</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#education">Education</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Me</h2>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Professional Summary</h3>
+            <p>
+              B.E (EEE) graduate with a strong analytical mindset and a passion
+              for data. Skilled in SQL, Python, Excel, and Power BI, with a
+              knack for turning complex data into clear insights. Combining
+              engineering logic with data storytelling to support smart
+              decision-making and problem-solving.
+            </p>
+
+            <h3 style="margin-top: 2rem">Technical Skills</h3>
+            <div class="skills">
+              <div class="skill">Python</div>
+              <div class="skill">SQL</div>
+              <div class="skill">MySQL</div>
+              <div class="skill">MS Excel</div>
+              <div class="skill">Power BI</div>
+              <div class="skill">Data Analysis</div>
+              <div class="skill">Data Visualization</div>
+              <div class="skill">Git</div>
+              <div class="skill">VS Code</div>
+              <div class="skill">Statistics</div>
+            </div>
+          </div>
+          <div class="about-image">
+            <!-- Replace with your photo or a relevant image -->
+            <img
+              src="images/images (8).jpg"
+              alt="Data Analysis"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Education</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2021 - 2025</div>
+              <h3 class="timeline-title">
+                Bachelor of Engineering (Electrical and Electronics)
+              </h3>
+              <p class="timeline-desc">
+                KPR Institute of Engineering and Technology, Anna University,
+                Coimbatore
+              </p>
+              <p class="timeline-desc">CGPA: 7.7/10.0</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2021</div>
+              <h3 class="timeline-title">HSC +2</h3>
+              <p class="timeline-desc">
+                Sri Lathangi Vidhya Mandir Matriculation School, Pollachi
+              </p>
+              <p class="timeline-desc">Percentage: 90%</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2019</div>
+              <h3 class="timeline-title">SSLC 10th</h3>
+              <p class="timeline-desc">
+                Sri Lathangi Vidhya Mandir Matriculation School, Pollachi
+              </p>
+              <p class="timeline-desc">Percentage: 88%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Projects</h2>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="IoT Smart System"
+              />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">
+                IoT-Enabled AI Smart System for Roof Gardening
+              </h3>
+              <span class="project-date">Jul 2024 - Mar 2025</span>
+              <p class="project-desc">
+                Designed and developed an IoT and AI-powered plant monitoring
+                system using KNN and CNN for real-time disease detection,
+                enhancing accuracy and reducing manual intervention.
+              </p>
+              <div class="project-tech">
+                <span class="tech-item">Machine Learning</span>
+                <span class="tech-item">IoT</span>
+                <span class="tech-item">KNN</span>
+                <span class="tech-item">CNN</span>
+                <span class="tech-item">Arduino</span>
+                <span class="tech-item">Python</span>
+              </div>
+              <div class="project-highlights">
+                <ul>
+                  <li>Led a team to optimize smart agriculture solutions</li>
+                  <li>Improved sustainability and supported gardeners</li>
+                  <li>Increased efficiency by 90%</li>
+                  <li>Reduced costs by 10%</li>
+                  <li>Improved customer satisfaction by 95%</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="images/Screenshot 2025-05-17 012559.png"
+                alt="Store Data Analysis"
+              />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">
+                Store Data Analysis – Interactive Dashboard Creation
+              </h3>
+              <span class="project-date">Dec 2024 – Jan 2025</span>
+              <p class="project-desc">
+                Developed an interactive sales dashboard using Microsoft Excel
+                by performing data cleaning, building Pivot Tables, applying
+                advanced Excel functions.
+              </p>
+              <div class="project-tech">
+                <span class="tech-item">Excel</span>
+                <span class="tech-item">Pivot Tables</span>
+                <span class="tech-item">Data Visualization</span>
+                <span class="tech-item">Data Analysis</span>
+                <span class="tech-item">Excel Dashboard</span>
+              </div>
+              <div class="project-highlights">
+                <ul>
+                  <li>Derived actionable customer insights</li>
+                  <li>Identified key demographics (women aged 30–49)</li>
+                  <li>
+                    Top-performing states (Maharashtra, Karnataka, Uttar
+                    Pradesh)
+                  </li>
+                  <li>Major sales channels (Amazon, Flipkart, Myntra)</li>
+                  <li>Proposed targeted marketing strategy</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Experience</h2>
+        </div>
+        <div class="experience-item">
+          <div class="exp-header">
+            <h3 class="exp-title">
+              Data Analytics and Visualization Job Simulation
+            </h3>
+            <span class="exp-date">May 2025</span>
+          </div>
+          <div class="exp-company">Accenture North America (Forage) - Internship</div>
+          <div class="exp-company">Remote</div>
+          <p class="exp-desc">
+            Completed a simulation focused on advising a hypothetical social
+            media client as a Data Analyst at Accenture.
+          </p>
+          <ul class="exp-highlights">
+            <li>
+              Cleaned, modelled and analysed 7 datasets to uncover insights into
+              content trends
+            </li>
+            <li>
+              Prepared a PowerPoint deck and video presentation to communicate
+              key insights
+            </li>
+            <li>
+              Informed strategic decisions for the client and internal
+              stakeholders
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Certifications</h2>
+        </div>
+        <div class="certs-grid">
+          <div class="cert-card">
+            <h3 class="cert-title">
+              Data Analytics and Visualization Job Simulation
+            </h3>
+            <span class="cert-org">Accenture North America (Forage)</span>
+            <span class="cert-date">May 2025</span>
+          </div>
+          <div class="cert-card">
+            <h3 class="cert-title">Microsoft Excel Training</h3>
+            <span class="cert-org">Besant Technologies</span>
+            <span class="cert-date">Apr 2025</span>
+          </div>
+          <div class="cert-card">
+            <h3 class="cert-title">Data Analytics Job Simulation</h3>
+            <span class="cert-org">Deloitte</span>
+            <span class="cert-date">April 2025</span>
+          </div>
+          <div class="cert-card">
+            <h3 class="cert-title">SQL for Beginners</h3>
+            <span class="cert-org">Scaler Academy</span>
+            <span class="cert-date">Jul 2024</span>
+          </div>
+          <div class="cert-card">
+            <h3 class="cert-title">Data Analytics Fundamentals</h3>
+            <span class="cert-org">L&T EduTech</span>
+            <span class="cert-date">Sep 2022 – Jan 2023</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container contact-container">
+        <div class="contact-info">
+          <h2>Get In Touch</h2>
+          <p>
+            I'm currently looking for new opportunities in data analysis and
+            engineering. Whether you have a question or just want to say hi,
+            I'll get back to you as soon as possible!
+          </p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Phone</h4>
+                <a href="tel:9952110966">+91 9952110966</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <a href="mailto:laiithraj738@gmail.com"
+                  >lalithraj738@gmail.com</a
+                >
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Location</h4>
+                <p>Coimbatore, Tamil Nadu, India</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer>
+        <div class="container footer-content">
+            <h3>Lalith Raj R</h3>
+            <p>Aspiring Data Analyst | Turning Complex Data into Clear Insights </p>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/lalithraj-ramakrishnan-17a154229" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/Lalithrajr" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.hackerrank.com/profile/21ee062_kpriet" target="_blank"><i class="fab fa-hackerrank"></i></a>
+            </div>
+            <p class="copyright">© 2025 Lalith Raj R. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+  </body>
+</html>
